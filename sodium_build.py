@@ -11,6 +11,10 @@ int sodium_mlock(void * const addr, const size_t len);
 
 int sodium_munlock(void * const addr, const size_t len);
 
+int crypto_pwhash_alg_default(void);
+
+size_t crypto_pwhash_saltbytes(void);
+
 size_t crypto_pwhash_strbytes(void);
 
 size_t crypto_pwhash_opslimit_moderate(void);
