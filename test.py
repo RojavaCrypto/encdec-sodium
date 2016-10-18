@@ -54,7 +54,9 @@ def decrypt(salt, nonce, ciphertext, password):
         print("Out of memory")
         return None
 
-    decrypted = ffi.new("unsigned char[]", len(message))
+    max_decrypted_size = (len(ciphertext) -
+        lib.crypto_aead_chacha20poly1305_ietf_abytes())
+    decrypted = ffi.new("unsigned char[]", max_decrypted_size)
     decrypted_len = ffi.new("unsigned long long *")
 
     # Decrypt message.
